@@ -1,10 +1,9 @@
 extern crate quickcheck;
 
-
 // Floating-point absolute value function
 
 fn fabs(x: f32) -> f32 {
-    if x >= 0.0 { x } else { x * -1.0 }
+    if x >= 0.0 { x } else { -x }
 }
 
 #[cfg(test)]
@@ -157,7 +156,7 @@ mod tests {
                 // can test it
 
                 // Note that we are returning a TestResult!
-                TestResult::from_bool(fabs(x) == x)
+                TestResult::from_bool(fabs(x) > x)
             }
         }
         
